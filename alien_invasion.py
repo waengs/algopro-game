@@ -10,28 +10,28 @@ import game_functions2 as gf
 
 
 def run_game():
-    # Initialize pygame, settings, and screen object.
+    #init pygame, settings, and screen object.
     pygame.init()
     ai_settings = Settings()
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     pygame.display.set_caption("Ayam Invasion")
 
-    # play button.
+    #play button.
     play_button = Button(ai_settings, screen, "Play")
 
-    # Create an instance to store game statistics, and a scoreboard.
+    #store game statistics, and a scoreboard.
     stats = GameStats(ai_settings)
     sb = Scoreboard(ai_settings, screen, stats)
 
-    # Make a ship, a group of bullets, and a group of aliens.
+    #ship, a group of bullets, and a group of aliens.
     ship = Ship(ai_settings, screen)
     bullets = Group()
     aliens = Group()
 
-    # Create the fleet of aliens.
+    #fleet of aliens.
     gf.create_fleet(ai_settings, screen, ship, aliens)
 
-    # Start the main loop for the game.
+    #start the main loop for the game.
     while True:
         gf.check_events(
             ai_settings, screen, stats, sb, play_button, ship, aliens, bullets
